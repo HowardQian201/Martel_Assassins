@@ -10,6 +10,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+def click():
+    print("Clicked")
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -17,33 +19,53 @@ class Ui_MainWindow(object):
         MainWindow.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(72, 20, 121, 32))
-        self.pushButton.setObjectName("pushButton")
-        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(190, 20, 113, 32))
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(80, 70, 151, 32))
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_4.setGeometry(QtCore.QRect(570, 20, 113, 32))
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.comboBox = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox.setGeometry(QtCore.QRect(90, 110, 104, 26))
-        self.comboBox.setObjectName("comboBox")
-        self.comboBox_2 = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox_2.setGeometry(QtCore.QRect(580, 70, 104, 26))
-        self.comboBox_2.setObjectName("comboBox_2")
-        self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_5.setGeometry(QtCore.QRect(110, 190, 113, 32))
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.pushButton_6 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_6.setGeometry(QtCore.QRect(400, 180, 151, 32))
-        self.pushButton_6.setObjectName("pushButton_6")
-        self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
-        self.textBrowser.setGeometry(QtCore.QRect(60, 240, 256, 241))
-        self.textBrowser.setObjectName("textBrowser")
+
+
+        self.Create_Game = QtWidgets.QPushButton(self.centralwidget)
+        self.Create_Game.setGeometry(QtCore.QRect(72, 20, 121, 32))
+        self.Create_Game.setObjectName("Create_Game")
+        self.Create_Game.clicked.connect(click)
+
+        self.Clear_Game = QtWidgets.QPushButton(self.centralwidget)
+        self.Clear_Game.setGeometry(QtCore.QRect(190, 20, 113, 32))
+        self.Clear_Game.setObjectName("Clear_Game")
+        self.Clear_Game.clicked.connect(click)
+
+        self.Eliminate_Player = QtWidgets.QPushButton(self.centralwidget)
+        self.Eliminate_Player.setGeometry(QtCore.QRect(80, 70, 151, 32))
+        self.Eliminate_Player.setObjectName("Eliminate_Player")
+        self.Eliminate_Player.clicked.connect(click)
+
+        self.Remove_Player = QtWidgets.QPushButton(self.centralwidget)
+        self.Remove_Player.setGeometry(QtCore.QRect(570, 20, 113, 32))
+        self.Remove_Player.setObjectName("Remove_Player")
+        self.Remove_Player.clicked.connect(click)
+
+        self.Player_list_box1 = QtWidgets.QComboBox(self.centralwidget)
+        self.Player_list_box1.setGeometry(QtCore.QRect(90, 110, 104, 26))
+        self.Player_list_box1.setObjectName("Player_list_box1")
+
+
+        self.Player_list_box2 = QtWidgets.QComboBox(self.centralwidget)
+        self.Player_list_box2.setGeometry(QtCore.QRect(580, 70, 104, 26))
+        self.Player_list_box2.setObjectName("Player_list_box2")
+
+
+        self.View_Game = QtWidgets.QPushButton(self.centralwidget)
+        self.View_Game.setGeometry(QtCore.QRect(110, 190, 113, 32))
+        self.View_Game.setObjectName("View_Game")
+        self.View_Game.clicked.connect(click)
+
+        self.Email_Assignments = QtWidgets.QPushButton(self.centralwidget)
+        self.Email_Assignments.setGeometry(QtCore.QRect(400, 180, 151, 32))
+        self.Email_Assignments.setObjectName("Email_Assignments")
+        self.Email_Assignments.clicked.connect(click)
+
+        self.Display_Game_Box = QtWidgets.QTextBrowser(self.centralwidget)
+        self.Display_Game_Box.setGeometry(QtCore.QRect(60, 240, 256, 241))
+        self.Display_Game_Box.setObjectName("Display_Game_Box")
+
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -55,12 +77,12 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.pushButton.setText(_translate("MainWindow", "Create Game"))
-        self.pushButton_2.setText(_translate("MainWindow", "Clear Game"))
-        self.pushButton_3.setText(_translate("MainWindow", "Eliminate Player"))
-        self.pushButton_4.setText(_translate("MainWindow", "Remove Player"))
-        self.pushButton_5.setText(_translate("MainWindow", "View Game"))
-        self.pushButton_6.setText(_translate("MainWindow", "Email Assignments"))
+        self.Create_Game.setText(_translate("MainWindow", "Create Game"))
+        self.Clear_Game.setText(_translate("MainWindow", "Clear Game"))
+        self.Eliminate_Player.setText(_translate("MainWindow", "Eliminate Player"))
+        self.Remove_Player.setText(_translate("MainWindow", "Remove Player"))
+        self.View_Game.setText(_translate("MainWindow", "View Game"))
+        self.Email_Assignments.setText(_translate("MainWindow", "Email Assignments"))
 
 
 if __name__ == "__main__":

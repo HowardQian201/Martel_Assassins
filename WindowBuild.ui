@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="Create_Game">
     <property name="geometry">
      <rect>
       <x>72</x>
@@ -27,7 +27,7 @@
      <string>Create Game</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="Clear_Game">
     <property name="geometry">
      <rect>
       <x>190</x>
@@ -40,7 +40,7 @@
      <string>Clear Game</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="Eliminate_Player">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -53,7 +53,7 @@
      <string>Eliminate Player</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="Remove_Player">
     <property name="geometry">
      <rect>
       <x>570</x>
@@ -66,7 +66,7 @@
      <string>Remove Player</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="Player_list_box1">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -76,7 +76,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_2">
+   <widget class="QComboBox" name="Player_list_box2">
     <property name="geometry">
      <rect>
       <x>580</x>
@@ -86,7 +86,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="View_Game">
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -99,7 +99,7 @@
      <string>View Game</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="Email_Assignments">
     <property name="geometry">
      <rect>
       <x>400</x>
@@ -112,7 +112,7 @@
      <string>Email Assignments</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser">
+   <widget class="QTextBrowser" name="Display_Game_Box">
     <property name="geometry">
      <rect>
       <x>60</x>
