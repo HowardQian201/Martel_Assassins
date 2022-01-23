@@ -7,5 +7,5 @@
 - Create JSON file storing name: [email: __ , target: __, targeted by: __, eliminated: true/false]
 - JSON entries are effectively nodes in a doubly linked list
 - Features: eliminate, remove, add, email, write to csv, write to JSON
-- GUI using PyQT5 drag and drop
+- GUI using PyQT5 drag and drop https://www.youtube.com/watch?v=Vde5SH8e1OQ&list=PLzMcBGfZo4-lB8MZfHPLTEHO9zJDDLpYj
 
