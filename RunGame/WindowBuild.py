@@ -10,60 +10,60 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-def click():
-    print("Clicked")
+from RunGame import Controller
+
 
 class Ui_MainWindow(object):
+    def __init__(self):
+        self.RemovePlayerComboBox = None
+        self.EliminatePlayerComboBox = None
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
+        #eliminate player combo box
+        self.EliminatePlayerComboBox = QtWidgets.QComboBox(self.centralwidget)
+        self.EliminatePlayerComboBox.setGeometry(QtCore.QRect(110, 70, 104, 26))
+        self.EliminatePlayerComboBox.setObjectName("EliminatePlayerComboBox")
 
-        self.Create_Game = QtWidgets.QPushButton(self.centralwidget)
-        self.Create_Game.setGeometry(QtCore.QRect(72, 20, 121, 32))
-        self.Create_Game.setObjectName("Create_Game")
-        self.Create_Game.clicked.connect(click)
+        #remove player combo box
+        self.RemovePlayerComboBox = QtWidgets.QComboBox(self.centralwidget)
+        self.RemovePlayerComboBox.setGeometry(QtCore.QRect(580, 70, 104, 26))
+        self.RemovePlayerComboBox.setObjectName("RemovePlayerComboBox")
 
-        self.Clear_Game = QtWidgets.QPushButton(self.centralwidget)
-        self.Clear_Game.setGeometry(QtCore.QRect(190, 20, 113, 32))
-        self.Clear_Game.setObjectName("Clear_Game")
-        self.Clear_Game.clicked.connect(click)
-
+        #eliminate player button
         self.Eliminate_Player = QtWidgets.QPushButton(self.centralwidget)
-        self.Eliminate_Player.setGeometry(QtCore.QRect(80, 70, 151, 32))
+        self.Eliminate_Player.setGeometry(QtCore.QRect(80, 30, 151, 32))
         self.Eliminate_Player.setObjectName("Eliminate_Player")
-        self.Eliminate_Player.clicked.connect(click)
+        self.Eliminate_Player.clicked.connect(Controller.eliminatePlayer(self.EliminatePlayerComboBox.currentText()))
 
+        #remove player button
         self.Remove_Player = QtWidgets.QPushButton(self.centralwidget)
         self.Remove_Player.setGeometry(QtCore.QRect(570, 20, 113, 32))
         self.Remove_Player.setObjectName("Remove_Player")
-        self.Remove_Player.clicked.connect(click)
+        self.Eliminate_Player.clicked.connect(Controller.removePlayer(self.RemovePlayerComboBox.currentText()))
 
-        self.Player_list_box1 = QtWidgets.QComboBox(self.centralwidget)
-        self.Player_list_box1.setGeometry(QtCore.QRect(90, 110, 104, 26))
-        self.Player_list_box1.setObjectName("Player_list_box1")
-
-
-        self.Player_list_box2 = QtWidgets.QComboBox(self.centralwidget)
-        self.Player_list_box2.setGeometry(QtCore.QRect(580, 70, 104, 26))
-        self.Player_list_box2.setObjectName("Player_list_box2")
-
-
+        #view game button
         self.View_Game = QtWidgets.QPushButton(self.centralwidget)
-        self.View_Game.setGeometry(QtCore.QRect(110, 190, 113, 32))
+        self.View_Game.setGeometry(QtCore.QRect(100, 120, 113, 32))
         self.View_Game.setObjectName("View_Game")
-        self.View_Game.clicked.connect(click)
+        text = self.Eliminate_Player.clicked.connect(Controller.displayGame)
+        self.appendText(text)
 
+        #email initial assignments button
         self.Email_Assignments = QtWidgets.QPushButton(self.centralwidget)
         self.Email_Assignments.setGeometry(QtCore.QRect(400, 180, 151, 32))
         self.Email_Assignments.setObjectName("Email_Assignments")
-        self.Email_Assignments.clicked.connect(click)
+        self.Eliminate_Player.clicked.connect(Controller.emailInitialAssignments())
 
+        #display game text box
         self.Display_Game_Box = QtWidgets.QTextBrowser(self.centralwidget)
-        self.Display_Game_Box.setGeometry(QtCore.QRect(60, 240, 256, 241))
+        self.Display_Game_Box.setGeometry(QtCore.QRect(40, 170, 256, 241))
         self.Display_Game_Box.setObjectName("Display_Game_Box")
+
 
 
         MainWindow.setCentralWidget(self.centralwidget)
@@ -77,12 +77,13 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.Create_Game.setText(_translate("MainWindow", "Create Game"))
-        self.Clear_Game.setText(_translate("MainWindow", "Clear Game"))
         self.Eliminate_Player.setText(_translate("MainWindow", "Eliminate Player"))
         self.Remove_Player.setText(_translate("MainWindow", "Remove Player"))
         self.View_Game.setText(_translate("MainWindow", "View Game"))
         self.Email_Assignments.setText(_translate("MainWindow", "Email Assignments"))
+
+    def appendText(self, text):
+        self.Display_Game_Box.append(text)
 
 
 if __name__ == "__main__":

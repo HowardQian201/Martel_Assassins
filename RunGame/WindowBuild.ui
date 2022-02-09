@@ -14,37 +14,11 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="Create_Game">
-    <property name="geometry">
-     <rect>
-      <x>72</x>
-      <y>20</y>
-      <width>121</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Create Game</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Clear_Game">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>20</y>
-      <width>113</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Clear Game</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="Eliminate_Player">
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>70</y>
+      <y>30</y>
       <width>151</width>
       <height>32</height>
      </rect>
@@ -66,17 +40,17 @@
      <string>Remove Player</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="Player_list_box1">
+   <widget class="QComboBox" name="EliminatePlayerComboBox">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>110</y>
+      <x>110</x>
+      <y>70</y>
       <width>104</width>
       <height>26</height>
      </rect>
     </property>
    </widget>
-   <widget class="QComboBox" name="Player_list_box2">
+   <widget class="QComboBox" name="RemovePlayerComboBox">
     <property name="geometry">
      <rect>
       <x>580</x>
@@ -89,8 +63,8 @@
    <widget class="QPushButton" name="View_Game">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>190</y>
+      <x>100</x>
+      <y>120</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -115,8 +89,8 @@
    <widget class="QTextBrowser" name="Display_Game_Box">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>240</y>
+      <x>40</x>
+      <y>170</y>
       <width>256</width>
       <height>241</height>
      </rect>
