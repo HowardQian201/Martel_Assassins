@@ -30,8 +30,8 @@ def read_csv():
             name = line[2]
             python_dict[name]["email"] = line[5]
             python_dict[name]["year"] = line[3]
-            python_dict[name]["on campus"] = True if line[4] == "Yes" else False
-            python_dict[name]["eliminated"] = False
+            python_dict[name]["on campus"] = line[4]
+            python_dict[name]["eliminated"] = "False"
             python_dict[name]["kills"] = 0
             python_dict[name]["email"] = line[5]
             if prev_line:
@@ -49,7 +49,7 @@ def read_csv():
         with open('game.json', 'w') as outfile:
             outfile.write(json_obj)
 
-read_csv()
+
 
 if __name__ == "__main__":
-    pass
+    read_csv()

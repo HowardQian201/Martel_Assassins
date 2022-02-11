@@ -18,6 +18,10 @@ def eliminatePlayer(player):
 
     f.close()
 
+    json_obj = json.dumps(game)
+    with open('game.json', 'w') as outfile:
+        outfile.write(json_obj)
+
     sendEmails.sendNewAssignment(targetedBy)
 
 """
@@ -35,6 +39,10 @@ def removePlayer(player):
     game[target]["targeted by"] = targetedBy
 
     f.close()
+
+    json_obj = json.dumps(game)
+    with open('game.json', 'w') as outfile:
+        outfile.write(json_obj)
 
     sendEmails.sendNewAssignment(targetedBy)
 
@@ -57,6 +65,11 @@ def displayGame():
             text += f'{player}\n'
 
     f.close()
+
+    json_obj = json.dumps(game)
+    with open('game.json', 'w') as outfile:
+        outfile.write(json_obj)
+
     return text
 
 #send initial assignments at beginning of game
