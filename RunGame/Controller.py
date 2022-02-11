@@ -1,19 +1,38 @@
 import json
 
 import sendEmails
-from RunGame import WindowBuild
-
 
 def eliminatePlayer(player):
+    f = open('../CreateGame/game.json')
+    game = json.load(f)
+    targettedBy = game[player]["targetted by"]
+    target = game[player]["target"]
 
-    #remove player
-    #send email for new assignment
+    game[player]["eliminated"] = "true"
 
-    sendEmails.sendNewAssignment(player)
+    game[targettedBy]["target"] = target
+    game[target]["targetted by"] = targettedBy
+    game[targettedBy]["kills"] += 1
+
+    f.close()
+
+    sendEmails.sendNewAssignment(targettedBy)
 
 
 def removePlayer(player):
-    return None
+    f = open('../CreateGame/game.json')
+    game = json.load(f)
+    targettedBy = game[player]["targetted by"]
+    target = game[player]["target"]
+
+    game[player]["eliminated"] = "removed"
+
+    game[targettedBy]["target"] = target
+    game[target]["targetted by"] = targettedBy
+
+    f.close()
+
+    sendEmails.sendNewAssignment(targettedBy)
 
 
 def displayGame():
@@ -22,7 +41,10 @@ def displayGame():
     # returns JSON object as a dictionary
     game = json.load(f)
 
-    text = game.dump()
+    text = ''
+    for player in game:
+        if player['eliminated'] == 'False':
+            text += f'{player}\n'
 
     f.close()
     return text
