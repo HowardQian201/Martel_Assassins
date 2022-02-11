@@ -66,15 +66,16 @@ def displayGame():
     text = ''
     for player in game:
         if game[player]['eliminated'] == 'False':
-            text += f'{player}\n'
+            text += f'{player}: {game[player]}\n'
 
     text += '\n'
 
     for player in game:
         if game[player]['eliminated'] != 'False':
-            text += f'{player}\n'
+            text += f'{player}: {game[player]}\n'
 
     f.close()
+    # print(text)
 
     return text
 

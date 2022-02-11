@@ -57,8 +57,8 @@ class Ui_MainWindow(object):
         self.View_Game = QtWidgets.QPushButton(self.centralwidget)
         self.View_Game.setGeometry(QtCore.QRect(210, 10, 571, 25))
         self.View_Game.setObjectName("View_Game")
-        text = str(self.View_Game.clicked.connect(lambda: Controller.displayGame()))
-        self.Display_Game_Box.append(text)
+        text = Controller.displayGame()
+        self.View_Game.clicked.connect(lambda: self.Display_Game_Box.append(text))
 
         #email assignments button
         self.Email_Assignments = QtWidgets.QPushButton(self.centralwidget)
