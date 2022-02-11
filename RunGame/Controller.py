@@ -7,18 +7,18 @@ eliminate player
 def eliminatePlayer(player):
     f = open('../CreateGame/game.json')
     game = json.load(f)
-    targettedBy = game[player]["targetted by"]
+    targetedBy = game[player]["targeted by"]
     target = game[player]["target"]
 
     game[player]["eliminated"] = "true"
 
-    game[targettedBy]["target"] = target
-    game[target]["targeted by"] = targettedBy
-    game[targettedBy]["kills"] += 1
+    game[targetedBy]["target"] = target
+    game[target]["targeted by"] = targetedBy
+    game[targetedBy]["kills"] += 1
 
     f.close()
 
-    sendEmails.sendNewAssignment(targettedBy)
+    sendEmails.sendNewAssignment(targetedBy)
 
 """
 remove player
@@ -26,17 +26,17 @@ remove player
 def removePlayer(player):
     f = open('../CreateGame/game.json')
     game = json.load(f)
-    targettedBy = game[player]["targeted by"]
+    targetedBy = game[player]["targeted by"]
     target = game[player]["target"]
 
     game[player]["eliminated"] = "removed"
 
-    game[targettedBy]["target"] = target
-    game[target]["targetted by"] = targettedBy
+    game[targetedBy]["target"] = target
+    game[target]["targeted by"] = targetedBy
 
     f.close()
 
-    sendEmails.sendNewAssignment(targettedBy)
+    sendEmails.sendNewAssignment(targetedBy)
 
 """
 display players in game
