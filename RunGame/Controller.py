@@ -4,6 +4,8 @@ import sendEmails
 """
 eliminate player
 """
+
+
 def eliminatePlayer(player):
     f = open('../CreateGame/game.json')
     game = json.load(f)
@@ -24,9 +26,12 @@ def eliminatePlayer(player):
 
     sendEmails.sendNewAssignment(targetedBy)
 
+
 """
 remove player
 """
+
+
 def removePlayer(player):
     f = open('../CreateGame/game.json')
     game = json.load(f)
@@ -46,9 +51,12 @@ def removePlayer(player):
 
     sendEmails.sendNewAssignment(targetedBy)
 
+
 """
 display players in game
 """
+
+
 def displayGame():
     # Opening JSON file
     f = open('../CreateGame/game.json')
@@ -72,6 +80,7 @@ def displayGame():
 
     return text
 
-#send initial assignments at beginning of game
+
+# send initial assignments at beginning of game
 def emailInitialAssignments():
     sendEmails.sendInitialAssignments()

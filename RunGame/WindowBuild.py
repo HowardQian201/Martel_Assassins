@@ -16,6 +16,7 @@ from RunGame import Controller
 Builds GUI
 """
 class Ui_MainWindow(object):
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
@@ -36,35 +37,34 @@ class Ui_MainWindow(object):
         self.Eliminate_Player = QtWidgets.QPushButton(self.centralwidget)
         self.Eliminate_Player.setGeometry(QtCore.QRect(30, 140, 151, 41))
         self.Eliminate_Player.setObjectName("Eliminate_Player")
-        if self.EliminatePlayerComboBox.currentText() != None:
-            self.Eliminate_Player.clicked.connect(Controller.eliminatePlayer(str(self.EliminatePlayerComboBox.currentText())))
+        if self.EliminatePlayerComboBox.currentText() != '':
+            self.Eliminate_Player.clicked.connect(Controller.eliminatePlayer(lambda: str(self.EliminatePlayerComboBox.currentText())))
 
         #remove player button
         self.Remove_Player = QtWidgets.QPushButton(self.centralwidget)
         self.Remove_Player.setGeometry(QtCore.QRect(30, 350, 151, 41))
         self.Remove_Player.setObjectName("Remove_Player")
-        if self.RemovePlayerComboBox.currentText() != None:
-            self.Remove_Player.clicked.connect(Controller.removePlayer(str(self.RemovePlayerComboBox.currentText())))
+        if self.RemovePlayerComboBox.currentText() != '':
+            self.Remove_Player.clicked.connect(Controller.removePlayer(str(lambda: self.RemovePlayerComboBox.currentText())))
 
-
-        #view game button
-        self.View_Game = QtWidgets.QPushButton(self.centralwidget)
-        self.View_Game.setGeometry(QtCore.QRect(210, 10, 571, 41))
-        self.View_Game.setObjectName("View_Game")
-        text = self.View_Game.clicked.connect(Controller.displayGame)
-        self.appendText(text)
-
-        #email assignments button
-        self.Email_Assignments = QtWidgets.QPushButton(self.centralwidget)
-        self.Email_Assignments.setGeometry(QtCore.QRect(30, 10, 151, 41))
-        self.Email_Assignments.setObjectName("Email_Assignments")
-        self.Email_Assignments.clicked.connect(Controller.emailInitialAssignments())
 
         #display game text box
         self.Display_Game_Box = QtWidgets.QTextBrowser(self.centralwidget)
         self.Display_Game_Box.setGeometry(QtCore.QRect(210, 60, 571, 501))
         self.Display_Game_Box.setObjectName("Display_Game_Box")
 
+        #view game button
+        self.View_Game = QtWidgets.QPushButton(self.centralwidget)
+        self.View_Game.setGeometry(QtCore.QRect(210, 10, 571, 41))
+        self.View_Game.setObjectName("View_Game")
+        text = str(self.View_Game.clicked.connect(lambda: Controller.displayGame))
+        self.Display_Game_Box.append(text)
+
+        #email assignments button
+        self.Email_Assignments = QtWidgets.QPushButton(self.centralwidget)
+        self.Email_Assignments.setGeometry(QtCore.QRect(30, 10, 151, 41))
+        self.Email_Assignments.setObjectName("Email_Assignments")
+        self.Email_Assignments.clicked.connect(lambda: Controller.emailInitialAssignments())
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -74,8 +74,6 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def appendText(self, text):
-        self.Display_Game_Box.append(text)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -87,13 +85,7 @@ class Ui_MainWindow(object):
 
 
 if __name__ == "__main__":
-    f = open('../CreateGame/game.json')
-    game = json.load(f)
-    print(game)
-    print(game['Howard Qian'])
-    print(game['Howard Qian']['targeted by'])
 
-    f.close()
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
