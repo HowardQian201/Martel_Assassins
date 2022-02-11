@@ -13,16 +13,16 @@
 
 
 
-[
-  "Howard" : [email: "hhq1@rice.edu,
+{
+  "Howard" : {email: "hhq1@rice.edu,
               target: "Sabrina",
-              targettedby: "Dev"]
+              targettedby: "Dev"}
               
-  "Sabrina":  [email: "shk4@rice.edu,
+  "Sabrina":  {email: "shk4@rice.edu,
               target: "Dev",
-              targettedby: "Howard"]
+              targettedby: "Howard"}
          
-  "Dev":  [email: "dmj7@rice.edu,
+  "Dev":  {email: "dmj7@rice.edu,
               target: "Howard",
-              targettedby: "Sabrina"]
-]
+              targettedby: "Sabrina"}
+}
