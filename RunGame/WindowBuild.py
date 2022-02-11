@@ -36,13 +36,16 @@ class Ui_MainWindow(object):
         self.Eliminate_Player = QtWidgets.QPushButton(self.centralwidget)
         self.Eliminate_Player.setGeometry(QtCore.QRect(30, 140, 151, 41))
         self.Eliminate_Player.setObjectName("Eliminate_Player")
-        self.Eliminate_Player.clicked.connect(Controller.eliminatePlayer(self.EliminatePlayerComboBox.currentText()))
+        if self.EliminatePlayerComboBox.currentText() != None:
+            self.Eliminate_Player.clicked.connect(Controller.eliminatePlayer(self.EliminatePlayerComboBox.currentText()))
 
         #remove player button
         self.Remove_Player = QtWidgets.QPushButton(self.centralwidget)
         self.Remove_Player.setGeometry(QtCore.QRect(30, 350, 151, 41))
         self.Remove_Player.setObjectName("Remove_Player")
-        self.Remove_Player.clicked.connect(Controller.removePlayer(self.RemovePlayerComboBox.currentText()))
+        if self.RemovePlayerComboBox.currentText() != None:
+            self.Remove_Player.clicked.connect(Controller.removePlayer(self.RemovePlayerComboBox.currentText()))
+
 
         #view game button
         self.View_Game = QtWidgets.QPushButton(self.centralwidget)
