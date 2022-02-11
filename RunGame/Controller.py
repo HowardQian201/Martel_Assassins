@@ -65,18 +65,16 @@ def displayGame():
 
     text = ''
     for player in game:
-        if player['eliminated'] == 'False':
+        if game[player]['eliminated'] == 'False':
             text += f'{player}\n'
 
+    text += '\n'
+
     for player in game:
-        if player['eliminated'] != 'False':
+        if game[player]['eliminated'] != 'False':
             text += f'{player}\n'
 
     f.close()
-
-    json_obj = json.dumps(game)
-    with open('game.json', 'w') as outfile:
-        outfile.write(json_obj)
 
     return text
 

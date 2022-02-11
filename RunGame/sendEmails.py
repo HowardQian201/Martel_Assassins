@@ -8,7 +8,7 @@ def sendInitialAssignments():
     game = json.load(f)
 
     gmail_user = 'hhq1@rice.edu'
-    gmail_password = 'H4649247q!'
+    gmail_password = 'H4649247q!!!'
 
     for player in game:
         sent_from = gmail_user
