@@ -7,24 +7,25 @@ eliminate player
 
 
 def eliminatePlayer(player):
-    f = open('../CreateGame/game.json')
-    game = json.load(f)
-    targetedBy = game[player]["targeted by"]
-    target = game[player]["target"]
+    if player != '':
+        f = open('../CreateGame/game.json')
+        game = json.load(f)
+        targetedBy = game[player]["targeted by"]
+        target = game[player]["target"]
 
-    game[player]["eliminated"] = "true"
+        game[player]["eliminated"] = "true"
 
-    game[targetedBy]["target"] = target
-    game[target]["targeted by"] = targetedBy
-    game[targetedBy]["kills"] += 1
+        game[targetedBy]["target"] = target
+        game[target]["targeted by"] = targetedBy
+        game[targetedBy]["kills"] += 1
 
-    f.close()
+        f.close()
 
-    json_obj = json.dumps(game)
-    with open('game.json', 'w') as outfile:
-        outfile.write(json_obj)
+        json_obj = json.dumps(game)
+        with open('game.json', 'w') as outfile:
+            outfile.write(json_obj)
 
-    sendEmails.sendNewAssignment(targetedBy)
+        sendEmails.sendNewAssignment(targetedBy)
 
 
 """
@@ -33,23 +34,24 @@ remove player
 
 
 def removePlayer(player):
-    f = open('../CreateGame/game.json')
-    game = json.load(f)
-    targetedBy = game[player]["targeted by"]
-    target = game[player]["target"]
+    if player != '':
+        f = open('../CreateGame/game.json')
+        game = json.load(f)
+        targetedBy = game[player]["targeted by"]
+        target = game[player]["target"]
 
-    game[player]["eliminated"] = "removed"
+        game[player]["eliminated"] = "removed"
 
-    game[targetedBy]["target"] = target
-    game[target]["targeted by"] = targetedBy
+        game[targetedBy]["target"] = target
+        game[target]["targeted by"] = targetedBy
 
-    f.close()
+        f.close()
 
-    json_obj = json.dumps(game)
-    with open('game.json', 'w') as outfile:
-        outfile.write(json_obj)
+        json_obj = json.dumps(game)
+        with open('game.json', 'w') as outfile:
+            outfile.write(json_obj)
 
-    sendEmails.sendNewAssignment(targetedBy)
+        sendEmails.sendNewAssignment(targetedBy)
 
 
 """
@@ -66,16 +68,17 @@ def displayGame():
     text = ''
     for player in game:
         if game[player]['eliminated'] == 'False':
-            text += f'{player}: {game[player]}\n'
-
-    text += '\n'
+            text += f'{player}:\n' \
+                    f'Target: {game[player]["target"]}; Targeted by: {game[player]["targeted by"]}\n' \
+                    f'Kills: {game[player]["kills"]}; Eliminated: {game[player]["eliminated"]}; Year: {game[player]["year"]}\n\n'
 
     for player in game:
         if game[player]['eliminated'] != 'False':
-            text += f'{player}: {game[player]}\n'
+            text += f'{player}:\n' \
+                    f'Target: {game[player]["target"]}; Targeted by: {game[player]["targeted by"]}\n' \
+                    f'Kills: {game[player]["kills"]}; Eliminated: {game[player]["eliminated"]}; Year: {game[player]["year"]}\n\n'
 
     f.close()
-    # print(text)
 
     return text
 

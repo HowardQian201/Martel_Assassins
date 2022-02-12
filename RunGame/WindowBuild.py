@@ -37,15 +37,13 @@ class Ui_MainWindow(object):
         self.Eliminate_Player = QtWidgets.QPushButton(self.centralwidget)
         self.Eliminate_Player.setGeometry(QtCore.QRect(30, 140, 151, 25))
         self.Eliminate_Player.setObjectName("Eliminate_Player")
-        if self.EliminatePlayerComboBox.currentText() != '':
-            self.Eliminate_Player.clicked.connect(lambda: Controller.eliminatePlayer(str(self.EliminatePlayerComboBox.currentText())))
+        self.Eliminate_Player.clicked.connect(lambda: Controller.eliminatePlayer(str(self.EliminatePlayerComboBox.currentText())))
 
         #remove player button
         self.Remove_Player = QtWidgets.QPushButton(self.centralwidget)
         self.Remove_Player.setGeometry(QtCore.QRect(30, 350, 151, 25))
         self.Remove_Player.setObjectName("Remove_Player")
-        if self.RemovePlayerComboBox.currentText() != '':
-            self.Remove_Player.clicked.connect(lambda: Controller.removePlayer(str(self.RemovePlayerComboBox.currentText())))
+        self.Remove_Player.clicked.connect(lambda: Controller.removePlayer(str(self.RemovePlayerComboBox.currentText())))
 
 
         #display game text box
@@ -57,8 +55,7 @@ class Ui_MainWindow(object):
         self.View_Game = QtWidgets.QPushButton(self.centralwidget)
         self.View_Game.setGeometry(QtCore.QRect(210, 10, 571, 25))
         self.View_Game.setObjectName("View_Game")
-        text = Controller.displayGame()
-        self.View_Game.clicked.connect(lambda: self.Display_Game_Box.append(text))
+        self.View_Game.clicked.connect(lambda: self.Display_Game_Box.append(Controller.displayGame()))
 
         #email assignments button
         self.Email_Assignments = QtWidgets.QPushButton(self.centralwidget)
