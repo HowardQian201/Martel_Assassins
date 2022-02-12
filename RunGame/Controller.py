@@ -4,7 +4,7 @@ import sendEmails
 """
 eliminate player
 """
-def eliminatePlayer(player, EliminatePlayerComboBox):
+def eliminatePlayer(player, EliminatePlayerComboBox, RemovePlayerComboBox, Display_Game_Box):
     if player != '':
         f = open('../CreateGame/game.json')
         game = json.load(f)
@@ -30,13 +30,15 @@ def eliminatePlayer(player, EliminatePlayerComboBox):
 
         index = EliminatePlayerComboBox.findText(player)
         EliminatePlayerComboBox.removeItem(index)
+        RemovePlayerComboBox.removeItem(index)
 
+        displayGame(Display_Game_Box)
 
 
 """
 remove player
 """
-def removePlayer(player, RemovePlayerComboBox):
+def removePlayer(player, RemovePlayerComboBox, EliminatePlayerComboBox, Display_Game_Box):
     if player != '':
         f = open('../CreateGame/game.json')
         game = json.load(f)
@@ -59,24 +61,28 @@ def removePlayer(player, RemovePlayerComboBox):
 
         index = RemovePlayerComboBox.findText(player)
         RemovePlayerComboBox.removeItem(index)
+        EliminatePlayerComboBox.removeItem(index)
+
+        displayGame(Display_Game_Box)
 
 
 """
 display players in game
 """
-def displayGame():
+def displayGame(Display_Game_Box):
+
     # Opening JSON file
     f = open('../CreateGame/game.json')
     # returns JSON object as a dictionary
     game = json.load(f)
 
-    text = 'In the game:\n'
+    text = 'Alive:\n'
     for player in game:
         if game[player]['eliminated'] == 'False':
             text += f'{player}:\n' \
                     f'Target: {game[player]["target"]}; Targeted by: {game[player]["targeted by"]}\n' \
                     f'Kills: {game[player]["kills"]}; Eliminated: {game[player]["eliminated"]}; Year: {game[player]["year"]}\n\n'
-    text += '\nNot in the game:\n'
+    text += '\nEliminated:\n'
     for player in game:
         if game[player]['eliminated'] != 'False':
             text += f'{player}:\n' \
@@ -85,7 +91,8 @@ def displayGame():
 
     f.close()
 
-    return text
+    Display_Game_Box.clear()
+    Display_Game_Box.append(text)
 
 
 """
