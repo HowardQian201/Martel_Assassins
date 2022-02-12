@@ -46,8 +46,8 @@ def sendNewAssignment(player):
     # returns JSON object as a dictionary
     game = json.load(f)
 
-    gmail_user = 'hhq1@gmail.com'
-    gmail_password = 'H4649247q!'
+    gmail_user = 'howard.h.qian@gmail.com'
+    gmail_password = 'qcqq4bchc4'
 
     sent_from = gmail_user
     to = game[player]["email"]

@@ -4,7 +4,7 @@ import sendEmails
 """
 eliminate player
 """
-def eliminatePlayer(player):
+def eliminatePlayer(player, EliminatePlayerComboBox):
     if player != '':
         f = open('../CreateGame/game.json')
         game = json.load(f)
@@ -17,19 +17,26 @@ def eliminatePlayer(player):
         game[target]["targeted by"] = targetedBy
         game[targetedBy]["kills"] += 1
 
+        game[player]["target"] = "N/A"
+        game[player]["targeted by"] = "N/A"
+
         f.close()
 
         json_obj = json.dumps(game)
-        with open('game.json', 'w') as outfile:
+        with open('../CreateGame/game.json', 'w') as outfile:
             outfile.write(json_obj)
 
         sendEmails.sendNewAssignment(targetedBy)
+
+        index = EliminatePlayerComboBox.findText(player)
+        EliminatePlayerComboBox.removeItem(index)
+
 
 
 """
 remove player
 """
-def removePlayer(player):
+def removePlayer(player, RemovePlayerComboBox):
     if player != '':
         f = open('../CreateGame/game.json')
         game = json.load(f)
@@ -41,13 +48,17 @@ def removePlayer(player):
         game[targetedBy]["target"] = target
         game[target]["targeted by"] = targetedBy
 
+        game[player]["target"] = "N/A"
+        game[player]["targeted by"] = "N/A"
+
         f.close()
 
         json_obj = json.dumps(game)
-        with open('game.json', 'w') as outfile:
+        with open('../CreateGame/game.json', 'w') as outfile:
             outfile.write(json_obj)
 
-        sendEmails.sendNewAssignment(targetedBy)
+        index = RemovePlayerComboBox.findText(player)
+        RemovePlayerComboBox.removeItem(index)
 
 
 """
@@ -59,13 +70,13 @@ def displayGame():
     # returns JSON object as a dictionary
     game = json.load(f)
 
-    text = ''
+    text = 'In the game:\n'
     for player in game:
         if game[player]['eliminated'] == 'False':
             text += f'{player}:\n' \
                     f'Target: {game[player]["target"]}; Targeted by: {game[player]["targeted by"]}\n' \
                     f'Kills: {game[player]["kills"]}; Eliminated: {game[player]["eliminated"]}; Year: {game[player]["year"]}\n\n'
-
+    text += '\nNot in the game:\n'
     for player in game:
         if game[player]['eliminated'] != 'False':
             text += f'{player}:\n' \
