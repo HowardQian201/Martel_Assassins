@@ -45,7 +45,6 @@ class Ui_MainWindow(object):
         self.Remove_Player.setObjectName("Remove_Player")
         self.Remove_Player.clicked.connect(lambda: Controller.removePlayer(str(self.RemovePlayerComboBox.currentText())))
 
-
         #display game text box
         self.Display_Game_Box = QtWidgets.QTextBrowser(self.centralwidget)
         self.Display_Game_Box.setGeometry(QtCore.QRect(210, 60, 571, 501))
@@ -59,9 +58,15 @@ class Ui_MainWindow(object):
 
         #email assignments button
         self.Email_Assignments = QtWidgets.QPushButton(self.centralwidget)
-        self.Email_Assignments.setGeometry(QtCore.QRect(30, 10, 151, 25))
+        self.Email_Assignments.setGeometry(QtCore.QRect(20, 10, 171, 25))
         self.Email_Assignments.setObjectName("Email_Assignments")
         self.Email_Assignments.clicked.connect(lambda: Controller.emailInitialAssignments())
+
+        #update combo boxes button
+        self.Update_Combo_Boxes = QtWidgets.QPushButton(self.centralwidget)
+        self.Update_Combo_Boxes.setGeometry(QtCore.QRect(20, 40, 171, 25))
+        self.Update_Combo_Boxes.setObjectName("Update Combo Boxes")
+        self.Update_Combo_Boxes.clicked.connect(lambda: Controller.updateComboBoxes(self.EliminatePlayerComboBox, self.RemovePlayerComboBox))
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -79,6 +84,7 @@ class Ui_MainWindow(object):
         self.Remove_Player.setText(_translate("MainWindow", "Remove Player"))
         self.View_Game.setText(_translate("MainWindow", "View Game"))
         self.Email_Assignments.setText(_translate("MainWindow", "Email Assignments"))
+        self.Update_Combo_Boxes.setText(_translate("MainWindow", "Update Combo Boxes"))
 
 
 if __name__ == "__main__":

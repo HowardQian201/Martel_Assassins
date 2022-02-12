@@ -4,8 +4,6 @@ import sendEmails
 """
 eliminate player
 """
-
-
 def eliminatePlayer(player):
     if player != '':
         f = open('../CreateGame/game.json')
@@ -31,8 +29,6 @@ def eliminatePlayer(player):
 """
 remove player
 """
-
-
 def removePlayer(player):
     if player != '':
         f = open('../CreateGame/game.json')
@@ -57,8 +53,6 @@ def removePlayer(player):
 """
 display players in game
 """
-
-
 def displayGame():
     # Opening JSON file
     f = open('../CreateGame/game.json')
@@ -83,6 +77,26 @@ def displayGame():
     return text
 
 
-# send initial assignments at beginning of game
+"""
+send initial assignments at beginning of game
+"""
 def emailInitialAssignments():
     sendEmails.sendInitialAssignments()
+
+"""
+update combo boxes
+"""
+def updateComboBoxes(EliminatePlayerComboBox, RemovePlayerComboBox):
+    EliminatePlayerComboBox.clear()
+    RemovePlayerComboBox.clear()
+
+    f = open('../CreateGame/game.json')
+    # returns JSON object as a dictionary
+    game = json.load(f)
+
+    for player in game:
+        if game[player]['eliminated'] == 'False':
+            EliminatePlayerComboBox.addItem(player)
+            RemovePlayerComboBox.addItem(player)
+
+    f.close()
