@@ -22,7 +22,6 @@ def read_csv():
         prev_line = None
 
         # Timestamp, Email Address, Full Name, Year, On campus?, Email
-        # howard <-> sabrina <-> akshat
         for line in csv_reader:
             if first_flag:
                 first_line = line

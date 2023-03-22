@@ -59,11 +59,16 @@ def removePlayer(player, RemovePlayerComboBox, EliminatePlayerComboBox, Display_
         with open('../CreateGame/game.json', 'w') as outfile:
             outfile.write(json_obj)
 
+        sendEmails.sendNewAssignment(targetedBy)
+        sendEmails.notifyRemoved(player)
+
         index = RemovePlayerComboBox.findText(player)
         RemovePlayerComboBox.removeItem(index)
         EliminatePlayerComboBox.removeItem(index)
 
         displayGame(Display_Game_Box)
+
+
 
 
 """
