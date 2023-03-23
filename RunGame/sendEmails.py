@@ -10,7 +10,7 @@ def sendInitialAssignments():
     game = json.load(f)
 
     gmail_user = 'howard.h.qian@gmail.com'
-    gmail_app_password = "cpmhimtjphknvach"
+    gmail_app_password = ""
 
     for player in game:
         sent_from = gmail_user
@@ -48,7 +48,7 @@ def sendNewAssignment(player):
     game = json.load(f)
 
     gmail_user = 'howard.h.qian@gmail.com'
-    gmail_app_password = "cpmhimtjphknvach"
+    gmail_app_password = ""
 
     sent_from = gmail_user
     to = game[player]["email"]
@@ -84,7 +84,7 @@ def notifyRemoved(player):
     game = json.load(f)
 
     gmail_user = 'howard.h.qian@gmail.com'
-    gmail_app_password = "cpmhimtjphknvach"
+    gmail_app_password = ""
 
     sent_from = gmail_user
     to = game[player]["email"]
