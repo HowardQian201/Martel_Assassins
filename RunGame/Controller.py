@@ -27,6 +27,7 @@ def eliminatePlayer(player, EliminatePlayerComboBox, RemovePlayerComboBox, Displ
             outfile.write(json_obj)
 
         sendEmails.sendNewAssignment(targetedBy)
+        sendEmails.notifyRemoved(player)
 
         index = EliminatePlayerComboBox.findText(player)
         EliminatePlayerComboBox.removeItem(index)
