@@ -21,6 +21,7 @@ def sendInitialAssignments():
         message = MIMEMultipart()
         message['From'] = sent_from
         message['To'] = to
+        message['Cc'] = "marco.stine5646@gmail.com"
         message['Subject'] = subject
         message.attach(MIMEText(body, 'plain'))
         message = message.as_string()
@@ -58,6 +59,7 @@ def sendNewAssignment(player):
     message = MIMEMultipart()
     message['From'] = sent_from
     message['To'] = to
+    message['Cc'] = "marco.stine5646@gmail.com"
     message['Subject'] = subject
     message.attach(MIMEText(body, 'plain'))
     message = message.as_string()
@@ -94,6 +96,7 @@ def notifyRemoved(player):
     message = MIMEMultipart()
     message['From'] = sent_from
     message['To'] = to
+    message['Cc'] = "marco.stine5646@gmail.com"
     message['Subject'] = subject
     message.attach(MIMEText(body, 'plain'))
     message = message.as_string()
