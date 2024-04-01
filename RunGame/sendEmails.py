@@ -14,14 +14,15 @@ def sendInitialAssignments():
 
     for player in game:
         sent_from = gmail_user
-        to = game[player]["email"]
+        to = [game[player]["email"]]
+        cc = ["mes20@rice.edu"]
         subject = "Your Assassins assignment"
         body = f"Your first assassins target is: {game[player]['target']}, a {game[game[player]['target']]['year']}. Good Luck!"
 
         message = MIMEMultipart()
         message['From'] = sent_from
-        message['To'] = to
-        message['Cc'] = "marco.stine5646@gmail.com"
+        message['To'] = ', '.join(to)
+        message['Cc'] = ', '.join(cc)
         message['Subject'] = subject
         message.attach(MIMEText(body, 'plain'))
         message = message.as_string()
@@ -30,7 +31,7 @@ def sendInitialAssignments():
             server = smtplib.SMTP('smtp.gmail.com', 587)
             server.starttls()
             server.login(gmail_user, gmail_app_password)
-            server.sendmail(sent_from, to, message)
+            server.sendmail(sent_from, to+cc, message)
             server.close()
             print(f'Email sent to {player}!')
 
@@ -52,14 +53,15 @@ def sendNewAssignment(player):
     gmail_app_password = "hsdlzpvsrmixignl"
 
     sent_from = gmail_user
-    to = game[player]["email"]
+    to = [game[player]["email"]]
+    cc = ["mes20@rice.edu"]
     subject = "Your New Assassins assignment"
     body = f"Your new assassins target is: {game[player]['target']}, a {game[game[player]['target']]['year']}. Good Luck!"
 
     message = MIMEMultipart()
     message['From'] = sent_from
-    message['To'] = to
-    message['Cc'] = "marco.stine5646@gmail.com"
+    message['To'] = ', '.join(to)
+    message['Cc'] = ', '.join(cc)
     message['Subject'] = subject
     message.attach(MIMEText(body, 'plain'))
     message = message.as_string()
@@ -69,7 +71,7 @@ def sendNewAssignment(player):
         server.starttls()
         # server.login(gmail_user, gmail_password)
         server.login(gmail_user, gmail_app_password)
-        server.sendmail(sent_from, to, message)
+        server.sendmail(sent_from, to+cc, message)
         server.close()
         print(f'Email sent to {player}!')
 
@@ -89,14 +91,15 @@ def notifyRemoved(player):
     gmail_app_password = "hsdlzpvsrmixignl"
 
     sent_from = gmail_user
-    to = game[player]["email"]
+    to = [game[player]["email"]]
+    cc = ["mes20@rice.edu"]
     subject = "Assassins update"
     body = f"Unfortunately, you have been removed from the game. Better luck next time."
 
     message = MIMEMultipart()
     message['From'] = sent_from
-    message['To'] = to
-    message['Cc'] = "marco.stine5646@gmail.com"
+    message['To'] = ', '.join(to)
+    message['Cc'] = ', '.join(cc)
     message['Subject'] = subject
     message.attach(MIMEText(body, 'plain'))
     message = message.as_string()
@@ -106,7 +109,7 @@ def notifyRemoved(player):
         server.starttls()
         # server.login(gmail_user, gmail_password)
         server.login(gmail_user, gmail_app_password)
-        server.sendmail(sent_from, to, message)
+        server.sendmail(sent_from, to+cc, message)
         server.close()
         print(f'Email sent to {player}!')
 
